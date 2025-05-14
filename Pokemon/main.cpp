@@ -1,46 +1,68 @@
 #include<iostream>
+
 using namespace std;
 
 int main()
 {
+	//Store Variables Trainer Name and Starter Pokemon
+	string TrainerName;
+	string StarterPokemon;
 
-	string PlayerName;
+	// Introduction by the Professor
+	cout << "Professor Oak: Hello! I didn't see you there, you must be the new Trainer in town that just came of age.\n";	
+	cout << "Professor Oak: My name is Professor Oak. I'm a Pokemon Professor who is a Pokemon Fanatic!\n";
+	cout << "Professor Oak: I mean who could say no to being able to examine a Garyados teeth up close?!\n";
+	cout << "Professor Oak: ...\n";
+	cout << "Professor Oak: Ah hmm...(got a little carried away) Anyway this isn't about me this about you, Trainer!\n";
+	cout << "Professor Oak: Before you embark on your journey,the Pokemon world needs to know who you are\n";
+	cout << "Professor Oak: Time to step up and tell us your name and remember, a great name is the start of every great adventure!\n\n";
 
-	cout << "Trainer!Before you embark on your journey,the Pok�mon world needs to know who you are" << endl;	//1st message from Professor Oak
-	cout <<"Time to step up and tell us your name and remember, a great name is the start of every great adventure!" << endl <<endl;	//2nd message from Professor Oak
+	// Get Trainer's Name
+	cout << "Professor Oak: What is your name?\n";	//Enter Trainer Name Message
+	cin >> TrainerName;	//Trainer Input Name
+	cout << "\nProfessor Oak: Oh your name is " << TrainerName << ", that's a magnificent name!\n";
 
-	cout << "Enter your name" << endl;	//Enter Player Name Message
+	// Presenting Starter Choices
+	cout << "Professor Oak: Now " << TrainerName << ", it's time for you to take your first steps to becoming a Pokemon Trainer.\n"; //Beginning of Choice Starter Text
+	cout << "Professor Oak: It's time for you to choose your Starter Pokemon.\n";
+	cout << "Professor Oak: You can choose one of the following Pokemon:\n";
+	cout << "\n1. Oddish - The Weed Pokemon. A Sweet Heart!\n";
+	cout << "\n2. Ghastly - The Gas Pokemon. A Prankster!\n";
+	cout << "\n3. Spheal - The Clap Pokemon. A Playful Spirit!\n";
 
-	cin >> PlayerName;	//Player Input Name
-
-	cout << endl << "Oh your name is " << PlayerName << ", Welcome to the world of Pokemon!" << endl;	//Finished statment
-
-	cout << endl << "Now " << PlayerName << ", it's time for you to take your first steps to becoming a Pok�mon Trainer." << endl;
-	cout << "It's time for you to choose your Starter Pok�mon." << endl;
-	cout << "You can choose one of the following Pok�mon:" << endl;
-	cout << "1.Oddish\n2. Ghastly\n3. Spheal\n" << endl;
-	cout << "Which Pok�mon would you like to choose? Enter the number: ";
-
-	int Starter; //Starter Pokemon Choice 
-	cin >> Starter;
+	cout << "\nProfessor Oak: Which Pokemon would you like to choose?\nEnter the number: ";
+	int Pkmn; //Pokémon Switch Index (The Expression)
+	cin >> Pkmn;
 	
+	//Store Starter based on Trainer input
+	switch(Pkmn) //Pokémon struct
+	{
+		case 1:	//Cases equate to choices
+		StarterPokemon = "Oddish";
+		cout << "\nProfessor Oak: You chose a verdant pal!\n";
+		break;	//Code will continue to execute until break for Switch Conditions
 
-	if (Starter == 1)
-	{
-		cout << "You chose Oddish! A verdant pal.\n";
+		case 2:
+		StarterPokemon = "Ghastly";
+		cout << "\nProfessor Oak: You chose a spooky partner!\n";
+		break;
+	
+		case 3:
+		StarterPokemon = "Spheal";
+		cout << "\nProfessor Oak: You chose a chilly friend!\n";
+		break;
+		
+		default: //if expression != case
+		StarterPokemon = "Pikachu";
+		cout << "\nProfessor Oak: Hmm... unfortunately I currently don't have that option, but I do have a " << StarterPokemon << "! A shocking choice!\n";
+		break;
 	}
-	else if(Starter == 2)
-	{
-		cout << "You chose Ghastly! A spooky partner.\n";
-	}
-	else if(Starter == 3)
-	{
-		cout << "You chose Spheal! A chilly friend!\n";
-	}
-	else
-	{
-		cout << "Not a Valid Starter! Game will now close.\n";
 
-		return 0;
-	}
+	//Conclusion
+	cout << "Professor Oak: " << TrainerName << " I have the feeling you and that " << StarterPokemon << " Are going to get along well!\n";
+	cout << "Professor Oak: This is the beginning of your journey get ready to embark on an adventure that will give you thrilling\n""moments, I can't wait to see how your story unfolds!\n";
+
+	return 0;
+	
+	
 };
