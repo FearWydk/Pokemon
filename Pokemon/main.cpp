@@ -6,7 +6,7 @@ int main()
 
 	string PlayerName;
 
-	cout << "Trainer!Before you embark on your journey,the Pokémon world needs to know who you are" << endl;	//1st message from Professor Oak
+	cout << "Trainer!Before you embark on your journey,the Pokï¿½mon world needs to know who you are" << endl;	//1st message from Professor Oak
 	cout <<"Time to step up and tell us your name and remember, a great name is the start of every great adventure!" << endl <<endl;	//2nd message from Professor Oak
 
 	cout << "Enter your name" << endl;	//Enter Player Name Message
@@ -15,5 +15,32 @@ int main()
 
 	cout << endl << "Oh your name is " << PlayerName << ", Welcome to the world of Pokemon!" << endl;	//Finished statment
 
+	cout << endl << "Now " << PlayerName << ", it's time for you to take your first steps to becoming a Pokï¿½mon Trainer." << endl;
+	cout << "It's time for you to choose your Starter Pokï¿½mon." << endl;
+	cout << "You can choose one of the following Pokï¿½mon:" << endl;
+	cout << "1.Oddish\n2. Ghastly\n3. Spheal\n" << endl;
+	cout << "Which Pokï¿½mon would you like to choose? Enter the number: ";
 
+	int Starter; //Starter Pokemon Choice 
+	cin >> Starter;
+	
+
+	if (Starter == 1)
+	{
+		cout << "You chose Oddish! A verdant pal.\n";
+	}
+	else if(Starter == 2)
+	{
+		cout << "You chose Ghastly! A spooky partner.\n";
+	}
+	else if(Starter == 3)
+	{
+		cout << "You chose Spheal! A chilly friend!\n";
+	}
+	else
+	{
+		cout << "Not a Valid Starter! Game will now close.\n";
+
+		return 0;
+	}
 };
