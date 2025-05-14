@@ -2,11 +2,19 @@
 
 using namespace std;
 
+enum StarterPokemon 
+{
+	Oddish,
+	Ghastly,
+	Spheal,
+	InvalidChoice
+};
+
 int main()
 {
 	//Store Variables Trainer Name and Starter Pokemon
 	string TrainerName;
-	string StarterPokemon;
+	StarterPokemon StarterPkmn;
 
 	// Introduction by the Professor
 	cout << "Professor Oak: Hello! I didn't see you there, you must be the new Trainer in town that just came of age.\n";	
@@ -35,31 +43,47 @@ int main()
 	cin >> Pkmn;
 	
 	//Store Starter based on Trainer input
-	switch(Pkmn) //Pokémon struct
+	switch (Pkmn)
 	{
-		case 1:	//Cases equate to choices
-		StarterPokemon = "Oddish";
+		case 1:
+		StarterPkmn = Oddish;
+		break;
+		
+		case 2:
+		StarterPkmn = Ghastly;
+		break;
+		
+		case 3:
+		StarterPkmn = Spheal;
+		break;
+		
+		default:
+		StarterPkmn = InvalidChoice;
+		break;
+	}
+	//Response based on Starter Pokemon
+	switch(StarterPkmn) //Pokémon struct
+	{
+		case Oddish:	//Cases equate to choices
 		cout << "\nProfessor Oak: You chose a verdant pal!\n";
 		break;	//Code will continue to execute until break for Switch Conditions
 
-		case 2:
-		StarterPokemon = "Ghastly";
+		case Ghastly:
 		cout << "\nProfessor Oak: You chose a spooky partner!\n";
 		break;
 	
-		case 3:
-		StarterPokemon = "Spheal";
+		case Spheal:
 		cout << "\nProfessor Oak: You chose a chilly friend!\n";
 		break;
 		
 		default: //if expression != case
-		StarterPokemon = "Pikachu";
-		cout << "\nProfessor Oak: Hmm... unfortunately I currently don't have that option, but I do have a " << StarterPokemon << "! A shocking choice!\n";
+		StarterPkmn = Oddish;
+		cout << "\nProfessor Oak: Hmm... unfortunately I currently don't have that option, but I do have an Oddish! A budding choice!\n";
 		break;
 	}
 
 	//Conclusion
-	cout << "Professor Oak: " << TrainerName << " I have the feeling you and that " << StarterPokemon << " Are going to get along well!\n";
+	cout << "Professor Oak: " << TrainerName << " I have the feeling you and that " <<(StarterPkmn == Oddish ? "Oddish": StarterPkmn == Ghastly? "Ghastly": "Spheal") << " are going to get along well!\n";
 	cout << "Professor Oak: This is the beginning of your journey get ready to embark on an adventure that will give you thrilling\n""moments, I can't wait to see how your story unfolds!\n";
 
 	return 0;
