@@ -2,11 +2,24 @@
 
 using namespace std;
 
-enum StarterPokemon 
+enum class StarterPokemon 
 {
 	Oddish,
 	Ghastly,
 	Spheal,
+	InvalidChoice
+};
+
+enum class PokemonType
+{
+	Electric,
+	Fire,
+	Ghost,
+	Grass,
+	Ground,
+	Ice,
+	Steel,
+	Water,
 	InvalidChoice
 };
 
@@ -46,44 +59,44 @@ int main()
 	switch (Pkmn)
 	{
 		case 1:
-		StarterPkmn = Oddish;
+		StarterPkmn = StarterPokemon::Oddish;
 		break;
 		
 		case 2:
-		StarterPkmn = Ghastly;
+		StarterPkmn = StarterPokemon::Ghastly;
 		break;
 		
 		case 3:
-		StarterPkmn = Spheal;
+		StarterPkmn = StarterPokemon::Spheal;
 		break;
 		
 		default:
-		StarterPkmn = InvalidChoice;
+		StarterPkmn = StarterPokemon::InvalidChoice;
 		break;
 	}
 	//Response based on Starter Pokemon
 	switch(StarterPkmn) //Pokémon struct
 	{
-		case Oddish:	//Cases equate to choices
+		case StarterPokemon::Oddish:	//Cases equate to choices
 		cout << "\nProfessor Oak: You chose a verdant pal!\n";
 		break;	//Code will continue to execute until break for Switch Conditions
 
-		case Ghastly:
+		case StarterPokemon::Ghastly:
 		cout << "\nProfessor Oak: You chose a spooky partner!\n";
 		break;
 	
-		case Spheal:
+		case StarterPokemon::Spheal:
 		cout << "\nProfessor Oak: You chose a chilly friend!\n";
 		break;
 		
 		default: //if expression != case
-		StarterPkmn = Oddish;
+		StarterPkmn = StarterPokemon::Oddish;
 		cout << "\nProfessor Oak: Hmm... unfortunately I currently don't have that option, but I do have an Oddish! A budding choice!\n";
 		break;
 	}
 
 	//Conclusion
-	cout << "Professor Oak: " << TrainerName << " I have the feeling you and that " <<(StarterPkmn == Oddish ? "Oddish": StarterPkmn == Ghastly? "Ghastly": "Spheal") << " are going to get along well!\n";
+	cout << "Professor Oak: " << TrainerName << " I have the feeling you and that " <<(StarterPkmn == StarterPokemon::Oddish ? "Oddish": StarterPkmn == StarterPokemon::Ghastly? "Ghastly": "Spheal") << " are going to get along well!\n";
 	cout << "Professor Oak: This is the beginning of your journey get ready to embark on an adventure that will give you thrilling\n""moments, I can't wait to see how your story unfolds!\n";
 
 	return 0;
