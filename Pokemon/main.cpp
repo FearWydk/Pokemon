@@ -15,6 +15,7 @@ enum class ChosenPokemon
 
 enum class PokemonType
 {
+	InvalidChoice,
 	Electric,
 	Fire,
 	Ghost,
@@ -22,8 +23,8 @@ enum class PokemonType
 	Ground,
 	Ice,
 	Steel,
-	Water,
-	InvalidChoice
+	Water
+	
 };
 
 class Pokemon
@@ -33,18 +34,37 @@ public:
 	PokemonType type;
 	int health;
 
-	//Created 2 constructors
+	//Default Constructor
 	Pokemon()
 	{
+		name = "Pikachu";
+		type = PokemonType::Electric;
+		health = 10;
+		cout << "A new pokemon has arrived from the default constructor!\n";
 	}
 
 
-
+	//Parameterized Constructor
 	Pokemon(string pName, PokemonType pType, int pHealth) 
 	{
 		name = pName;
 		type = pType;
 		health = pHealth;
+		cout << "A new pokemon named " << name << " has appeared!\n";
+	}
+
+	// Copy constructor 
+	Pokemon(const Pokemon& other)
+	{
+		name = other.name;
+		type = other.type;
+		health = other.health;
+		cout << "A new Pokemon has been duplicated from " << other.name << "!\n";
+	}
+
+	~Pokemon()
+	{
+		cout << name << " has been released.\n";
 	}
 
 	void attack()
@@ -57,8 +77,37 @@ public:
 class Player
 {
 public:
+	//public variables
 	string name;
 	Pokemon chosenPokemon;
+
+	//Constructor & Deconstructor
+	//Default
+	Player()
+	{
+		name = "Trainer";
+		chosenPokemon = Pokemon();
+		cout << "A new trainer named " << name << " has arrived!\n";
+	}
+	//Parameterized constructor
+	Player(string tName,Pokemon selectedPokemon)
+	{
+		name = tName;
+		chosenPokemon = selectedPokemon;
+		cout << "Trainer" << name << " has arrived!\n";
+	}
+	// Copy constructor 
+	Player(const Player& pCopy)
+	{
+		name = pCopy.name;
+		chosenPokemon = pCopy.chosenPokemon;
+
+		cout << "A new Trainer has been duplicated from " << pCopy.name << "!\n";
+	}
+	~Player()
+	{
+
+	}
 
 	void choosePokemon(int Chosen)
 	{
@@ -90,6 +139,13 @@ class ProfessorOak
 {
 public:
 	string name;
+
+	//Parameterized cosntructor.
+	ProfessorOak(string oName)
+	{
+		name = oName;
+	}
+
 
 	void WelcomePlayer(Player& trainer)
 	{
@@ -132,23 +188,42 @@ public:
 
 int main()
 {
-	Player trainer;
-	ProfessorOak professor;
-	Pokemon placeholderPokemon;
+	//Test Default and Parameterized Constructor
+	Pokemon defaultPokemon;
+	Pokemon charmander("Charmander", PokemonType::Fire, 100);
+	cout << "Pokemon Details:\n";
+	cout << "Name: " << defaultPokemon.name << "\nType: " << (int)defaultPokemon.type << "\nHealth: " << defaultPokemon.health << "\n";
+	cout << "Name: " << charmander.name << "\nType: " << (int)charmander.type << "\nHealth: " << charmander.health << "\n";
 
-	//assign placeholder Pokemon values
-	placeholderPokemon.name = "Bulbasaur";
-	placeholderPokemon.type = PokemonType::Grass;
-	placeholderPokemon.health = 40;
+	// Test Copy Constructor
+	Pokemon bulbasaur("Bulbasaur", PokemonType::Grass, 100);
+	Pokemon bulbasaurC = bulbasaur;
+	cout << "Original Pokemon Health: " << bulbasaur.health << "\n";
+	cout << "Copied Pokemon Health: " << bulbasaurC.health << "\n";
 
+	// Modify Copy Health
+	bulbasaurC.health = 80;
+	cout << "After Modification:\n";
+	cout << "Original Pokemon Health: " << bulbasaur.health << "\n";
+	cout << "Copied Pokemon Health: " << bulbasaurC.health << "\n";
+
+	// Test Destructor
+	{ Pokemon garatina("Garatina", PokemonType::Ghost, 120); }
+
+
+	
+	
 	//assign Player name
-	trainer.name = "Trainer";
+	Player trainer ("Josh", charmander);
 
 	//assign Professor Oaks name
-	professor.name = "Professor Oak";
+	ProfessorOak professor ("Professor Oak");
 
 	professor.WelcomePlayer(trainer);
 	professor.OfferPokemonChoices(trainer);
+
+	
+
 	
 	//Conclusion
 	cout << professor.name << ": " << trainer.name << " I have the feeling you and that " << trainer.chosenPokemon.name << " are going to get along well!\n";
