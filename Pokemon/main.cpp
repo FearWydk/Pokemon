@@ -266,7 +266,60 @@ public:
 };
 
 
+void gameLoop(Player& trainer)
+{
+	int pChoice;
+	bool gameRunning = true;
+	while (gameRunning)
+	{
+		clearConsole();
 
+		cout << "What would you like to do next" << trainer.name << " ?\n";
+		cout << "1. Walk through the tall grass.\n";
+		cout << "2. Visit the PokeCenter.\n";
+		cout << "3. Challenge a Gym Leader.\n";
+		cout << "4. Visit the PokeMart.\n";
+		cout << "5. Quit.\n";
+		cin >> pChoice;
+		
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+		switch (pChoice)
+		{
+		case 1:
+			cout << "You look around... but all the wild Pokemon are on vacation. Maybe try again later?\n";;
+			break;
+		case 2:
+			cout << "You head to the PokeCenter, but Nurse Joy is out on a coffee break." 
+				 << "Guess your Pokemon will have to tough it out for now!\n";
+			break;
+		case 3:
+			cout << "You march up to the Gym, but it's closed for renovations. Seems like even Gym Leaders need a break!\\n";
+			break;
+		case 4:
+			cout << "You push open the PokeMart doors… only to find the clerk snoozing atop the counter!\n"
+				<< "\"Zzz… Welcome to PokeMart… zzz…\"\n"
+				<< "Guess you'll have to shop while he's catching Z's!\n";
+			break;
+		case 5:
+			cout << "You decide to quit, but Professor Oak's voice echoes: 'There's no quitting in Pokemon training!'\\n";
+			cout << "Are you sure you want to quit? (y/n): ";
+			char quitChoice;
+			cin >> quitChoice;
+			if (quitChoice == 'y' || quitChoice == 'Y') 
+			{
+				gameRunning = false;
+			};
+			break;
+		default:
+			cout << "That's not a valid choice. Try again!\n";
+			break;
+		}
+		waitForResponse();
+	}
+	
+	cout << "Until next time" << trainer.name << "your Pokemon journey awaits for your return.\n";
+}
 
 int main()
 {
@@ -284,9 +337,9 @@ int main()
 	// Main Quest Explaination
 	professor.explainMainQuest(trainer);
 
-	//Game Loop Placeholder
-	cout << "\n[Placeholder for the Game Loop]\n";
-	
+	//Game Loop
+	gameLoop(trainer);
+
 	
 	
 		return 0;
