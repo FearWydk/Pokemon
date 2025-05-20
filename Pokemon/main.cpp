@@ -1,25 +1,13 @@
 #include <iostream> 
-#include <limits.h>
+#include <limits>
 #include <string>
+
 #include "PokemonType.hpp"
 #include "PokemonChoice.hpp"
+#include "Utility.hpp"
 
 using namespace std;
 
-
-void clearConsole()
-{
-	#ifdef _WIN32
-		system("cls");
-	#else
-		(void)system("clear");
-	#endif
-};
-//function for Player response
-void waitForResponse()
-{
-	cin.get(); // Wait for Player Input
-};
 
 
 
@@ -65,7 +53,8 @@ public:
 	void attack()
 	{
 		cout << name << "Used Confused Ray, It was Super Effective!\n";
-		waitForResponse();
+		Utility::waitForResponse();
+
 	}
 
 };
@@ -121,7 +110,7 @@ public:
 		}
 
 		cout << "Trainer " << name << " chose " << chosenPokemon.name << "!\n";
-		waitForResponse();
+		Utility::waitForResponse();
 	}
 };
 
@@ -139,43 +128,43 @@ public:
 
 	void WelcomePlayer(Player& trainer)
 	{
-		clearConsole();
+		Utility::clearConsole();
 
 		// Introduction by the Professor
 		cout << name << ": Hello! I didn't see you there, you must be the new Trainer in town that just came of age.\n";
 		cout << name << ": My name is Oak. I'm a Pokemon Professor who is a Pokemon Fanatic!\n";
-		waitForResponse();
+		Utility::waitForResponse();
 
 		cout << name << ": I mean who could say no to being able to examine a Garyados teeth up close?!\n";
-		waitForResponse();
+		Utility::waitForResponse();
 
 		cout << name << ": ...\n";
-		waitForResponse();
+		Utility::waitForResponse();
 
 		cout << name << ": Ah hmm...(got a little carried away)... Anyway this isn't about me, this is about you, Trainer!\n";
-		waitForResponse();
+		Utility::waitForResponse();
 
 		cout << name << ": Before you embark on your journey,the Pokemon world needs to know who you are.\n";
-		waitForResponse();
+		Utility::waitForResponse();
 
 		cout << name << ": Time to step up and tell us your name and remember, a great name is the start of every great adventure!\n\n";
-		waitForResponse();
+		Utility::waitForResponse();
 	}
 
 	void OfferPokemonChoices(Player& trainer)
 	{
-		clearConsole();
+		Utility::clearConsole();
 		// Get Trainer's Name
 		cout << name << ": What is your name?\n";	//Enter Trainer Name Message
 		getline(cin, trainer.name);	//Trainer Input Name
 		cout << name << ": Oh your name is " << trainer.name << ", that's a magnificent name!\n";
-		waitForResponse();
+		Utility::waitForResponse();
 
 		// Presenting Starter Choices
 		cout << name << ": Now " << trainer.name << ", it's time for you to take your first steps to becoming a Pokemon Trainer.\n"; //Beginning of Choice Starter Text
-		waitForResponse();
+		Utility::waitForResponse();
 		cout << name << ": It's time for you to choose your Starter Pokemon.\n";
-		waitForResponse();
+		Utility::waitForResponse();
 		cout << name << ": You can choose one of the following Pokemon:\n";
 		cout << "\n1. Oddish - The Weed Pokemon. A Sweet Heart!\n";
 		cout << "\n2. Ghastly - The Gas Pokemon. A Prankster!\n";
@@ -184,66 +173,66 @@ public:
 		int Pkmn; //Pokémon Switch Index (The Expression)
 		cin >> Pkmn;
 		trainer.choosePokemon(Pkmn);
-		waitForResponse();
+		Utility::waitForResponse();
 
 		
 	}
 
 	void explainMainQuest(Player& trainer)
 	{
-		clearConsole();
+		Utility::clearConsole();
 
 		cout << name << ": Alright " << trainer.name << ", I am about to explain to you about your upcoming grand adventure.\n";
-		waitForResponse();
+		Utility::waitForResponse();
 
 		cout << name << ": You see, becoming a Pokemon Master is no easy feat. It takes courage, wisdom, and a bit of luck.\n";
-		waitForResponse();
+		Utility::waitForResponse();
 
 		cout << name << ": Your mission, should you choose to accept it (and trust me, you really don't have a choice)\n"
 			 << "is to collect all the Pokemon Badges and conquer the Pokemon League.\n";
-		waitForResponse();
+		Utility::waitForResponse();
 
 		cout << trainer.name << ":  Wait... that sounds a lot like every other Pokemon game out there.\n";
-		waitForResponse();
+		Utility::waitForResponse();
 
 		cout << name << ": Shhh! Don't break the fourth wall" << trainer.name << "!This is serious business.\n";
-		waitForResponse();
+		Utility::waitForResponse();
 
 		cout << name << ": To achieve this, you'll need to battle wild Pokemon, challenge gym leaders, and of course, keep your Pokemon healthy at the PokeCenter.\n";
-		waitForResponse();
+		Utility::waitForResponse();
 
 		cout << name << ": Along the way, you'll capture new Pokemon to strengthen your team. Just remember—there's a limit to how many Pokemon you can carry, so choose wisely!.\n";
-		waitForResponse();
+		Utility::waitForResponse();
 
 		cout << trainer.name << ": Sounds like a walk in the park... right?\n";
-		waitForResponse();
+		Utility::waitForResponse();
 
 		cout << name << ": Hah! That’s what they all say! But beware, young Trainer, the path to victory is fraught with challenges.\n"
 			 << "And if you lose a battle... well, let’s just say you'll be starting from square one.\n";
-		waitForResponse();
+		Utility::waitForResponse();
 
 		cout << name << ": So, what do you say? Are you ready to become the next Pokemon Champion?\n";
-		waitForResponse();
+		Utility::waitForResponse();
 
 		cout << trainer.name << ": Ready as I'll ever be, Professor!\n";
-		waitForResponse();
+		Utility::waitForResponse();
 
 		cout << name << ": That's the spirit! Now, your journey begins.\n";
-		waitForResponse();
+		Utility::waitForResponse();
 
 		cout << name << ": But first... let's just pretend I didn't forget to set up the actual game loop... Ahem, onwards!\n";
-		waitForResponse();
+		Utility::waitForResponse();
 
 	}
 
 	void conclusionMessage(Player& trainer)
 	{
-		clearConsole();
+		Utility::clearConsole();
 		//Conclusion
 		cout << name << ": " << trainer.name << " I have the feeling you and that " << trainer.chosenPokemon.name << " are going to get along well!\n";
-		waitForResponse();
+		Utility::waitForResponse();
 		cout << name << ": This is the beginning of your journey get ready to embark on an adventure that will give you thrilling\n""moments, I can't wait to see how your story unfolds!\n";
-		waitForResponse();
+		Utility::waitForResponse();
 	}
 };
 
@@ -254,7 +243,7 @@ void gameLoop(Player& trainer)
 	bool gameRunning = true;
 	while (gameRunning)
 	{
-		clearConsole();
+		Utility::clearConsole();
 
 		cout << "What would you like to do next" << trainer.name << " ?\n";
 		cout << "1. Walk through the tall grass.\n";
@@ -297,7 +286,7 @@ void gameLoop(Player& trainer)
 			cout << "That's not a valid choice. Try again!\n";
 			break;
 		}
-		waitForResponse();
+		Utility::waitForResponse();
 	}
 	
 	cout << "Until next time" << trainer.name << "your Pokemon journey awaits for your return.\n";
