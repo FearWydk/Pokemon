@@ -1,6 +1,8 @@
 #include <iostream> 
 #include <limits.h>
 #include <string>
+#include "PokemonType.hpp"
+#include "PokemonChoice.hpp"
 
 using namespace std;
 
@@ -19,29 +21,9 @@ void waitForResponse()
 	cin.get(); // Wait for Player Input
 };
 
-enum class ChosenPokemon
-{
-	InvalidChoice,
-	Oddish,
-	Ghastly,
-	Spheal,
-	Pikachu
-	
-};
 
-enum class PokemonType
-{
-	InvalidChoice,
-	Electric,
-	Fire,
-	Ghost,
-	Grass,
-	Ground,
-	Ice,
-	Steel,
-	Water
-	
-};
+
+
 
 class Pokemon
 {
@@ -343,4 +325,5 @@ int main()
 	
 	
 		return 0;
-#include "header.h"
+		
+		};
